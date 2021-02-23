@@ -7,3 +7,5 @@ GenConfigs.py
 
 # compiled bytecode
 __pycache__/
+
+*.out

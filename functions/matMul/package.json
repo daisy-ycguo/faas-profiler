@@ -1,0 +1,8 @@
+{
+  "name": "matMul",
+  "version": "1.0.0",
+  "main": "matMul.js",
+  "dependencies": {
+    "mathjs": "5.0.4"
+  }
+}

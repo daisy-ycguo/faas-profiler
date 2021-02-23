@@ -13,8 +13,7 @@ sys.path = ['./', '../'] + sys.path
 # Local
 from GenConfigs import *
 
-DB_CONFIG_FILE = os.path.expanduser(
-    WSK_PATH[:-3]+'/../ansible/db_local.ini')
+DB_CONFIG_FILE = os.path.expanduser(FAAS_ROOT+'/db_local.ini')
 
 # Examples:
 # print(GetDBConfigs())
@@ -51,7 +50,7 @@ def GetAllActivationDocs():
     """
     configs = GetDBConfigs()
     url = configs['db_protocol']+'://'+configs['db_host']+':' + \
-        configs['db_port']+'/'+'whisk_local_activations/_all_docs'
+        configs['db_port']+'/'+configs['db_prefix']+'activations/_all_docs'
     headers = {
         'Content-Type': 'application/json',
     }
@@ -67,7 +66,7 @@ def GetActivationRecordsSince(since, limit=100):
     """
     configs = GetDBConfigs()
     url = configs['db_protocol']+'://'+configs['db_host']+':' + \
-        configs['db_port']+'/'+'whisk_local_activations/_find'
+        configs['db_port']+'/'+configs['db_prefix']+'activations/_find'
     headers = {
         'Content-Type': 'application/json',
     }
@@ -92,7 +91,7 @@ def GetActivationIDsSince(since, limit=100):
     """
     configs = GetDBConfigs()
     url = configs['db_protocol']+'://'+configs['db_host']+':' + \
-        configs['db_port']+'/'+'whisk_local_activations/_find'
+        configs['db_port']+'/'+configs['db_prefix']+'activations/_find'
     headers = {
         'Content-Type': 'application/json',
     }
@@ -118,7 +117,7 @@ def GetActivation(activation_id, namespace='guest'):
     """
     configs = GetDBConfigs()
     url = configs['db_protocol']+'://'+configs['db_host']+':'+configs['db_port'] + \
-        '/'+'whisk_local_activations'+'/'+namespace+'%2F'+activation_id
+        '/'+configs['db_prefix']+'activations'+'/'+namespace+'%2F'+activation_id
     headers = {
         'Content-Type': 'application/json',
     }
