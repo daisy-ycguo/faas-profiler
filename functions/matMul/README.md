@@ -10,13 +10,13 @@ zip -r matMulNode.zip *
 2. create action using the command 
 
 ```
-wsk action create matMulNodejs --kind nodejs:6 matMulNode.zip
+wsk action create matMulNodejs --kind nodejs:12 matMulNode.zip -i
 
 ```
 
 3. Execute the action
 
 ```
-wsk action invoke matMulNodejs -b -p dim 1000
+wsk action invoke matMulNodejs -b -p dim 1000 -i
 ```
 
